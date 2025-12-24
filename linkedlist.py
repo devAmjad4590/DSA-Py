@@ -9,7 +9,13 @@ class LinkedList:
         new_node = Node(value)
         self.head = new_node
         self.tail = new_node
-        length = 1
+        self.length = 1
+
+    def printList(self):
+        temp = self.head
+        while temp is not None:
+            print(temp.value)
+            temp = temp.next
 
 
 linkedlist = LinkedList(4)
