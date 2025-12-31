@@ -28,6 +28,17 @@ class LinkedList:
         self.length += 1
         return True
 
+    def find_middle_node(self):
+        slow = self.head
+        fast = self.head
+
+        while fast != None and fast.next != None:
+            slow = slow.next
+            fast = fast.next
+            fast = fast.next
+        return slow
+
+
     def pop(self):
         if self.length == 0:
             return None
