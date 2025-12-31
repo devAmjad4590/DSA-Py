@@ -41,15 +41,16 @@ class LinkedList:
     def has_loop(self):
         slow = self.head
         fast = self.head
-
-        while fast.next != None or fast != None:
-            fast = fast.next
-            fast = fast.next
+        
+        while fast != None:
             slow = slow.next
+            fast = fast.next
+            if fast == None:
+                return False
+            fast = fast.next
             if fast == slow:
                 return True
         return False
-
 
     def pop(self):
         if self.length == 0:
