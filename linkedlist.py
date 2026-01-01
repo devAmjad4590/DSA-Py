@@ -38,6 +38,26 @@ class LinkedList:
             fast = fast.next
         return slow
 
+    def remove_duplicates(self):
+        current_node = self.head
+        if current_node is None:
+            return None
+        myset = set()
+        prev = self.head
+        if current_node.value not in myset:
+            myset.add(current_node.value)
+            current_node = current_node.next
+        while current_node != None:
+            if current_node.value not in myset:
+                myset.add(current_node.value)
+                prev.next = current_node
+                current_node = current_node.next
+                prev = prev.next
+                self.length -= 1
+            else:
+                current_node = current_node.next
+        return True
+
     def has_loop(self):
         slow = self.head
         fast = self.head
