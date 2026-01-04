@@ -46,6 +46,26 @@ class LinkedList:
             curr = curr.next
         return n
 
+    # this function is for solving a challenge where a linked list doesn't have tail
+    def partition_list(self, value):
+        d1 = LinkedList(0) # for less than value
+        d2 = LinkedList(0) # for more than or equal than value
+        prev1 = d1.head
+
+        curr = self.head
+        while curr:
+            if curr.value < value:
+                d1.append(curr.value)
+                prev1 = prev1.next
+            else:
+                d2.append(curr.value)
+            curr = curr.next
+        # connect the two linked lists
+        prev1.next = d2.head.next
+        self.head = d1.head.next
+        return d1
+
+
     def remove_duplicates(self):
         seen = set()
         current = self.head
@@ -174,7 +194,6 @@ class LinkedList:
             temp.next = before
             before = temp
             temp = after
-
 def find_kth_from_end(ll, k):
     slow = ll.head
     fast = ll.head
