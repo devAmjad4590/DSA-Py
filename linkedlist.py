@@ -182,6 +182,36 @@ class LinkedList:
         self.length -= 1
         return temp
 
+    # assuming that start and end are NOT out of bound
+    def reverse_between(self, start, end):
+        # 4 - 1 = 3 loop 
+        # curr = curr.next Xstart times
+        # prev = curr.next Xstart - 1 times
+        # to_move = curr.next
+        if self.head is None or self.length == 1:
+            return None
+        dummy = Node(0)
+        dummy.next = self.head
+        prev = dummy
+        
+        i_p = 0
+        while i_p < start:
+            prev = prev.next
+            i_p += 1
+        curr = prev.next
+
+        i = 0
+        while i < end - start:
+            to_move = curr.next
+            curr.next = to_move.next
+            to_move.next = prev.next
+            prev.next = to_move
+            i += 1
+        self.head = dummy.next
+
+        
+        
+
     def reverse(self):
         temp = self.head
         self.head = self.tail
