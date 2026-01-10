@@ -46,6 +46,23 @@ class LinkedList:
             curr = curr.next
         return n
 
+    def swap_pairs(self):
+        dummy = Node(0)
+        dummy.next = self.head
+        prev = dummy
+        if self.length < 2:
+            return None
+
+        while prev.next and prev.next.next:
+            f = prev.next
+            s = f.next
+            f.next = s.next
+            s.next = f
+            prev.next = s
+            prev = f
+        self.head = dummy.next
+            
+
     # this function is for solving a challenge where a linked list doesn't have tail
     def partition_list(self, value):
         d1 = LinkedList(0) # for less than value
