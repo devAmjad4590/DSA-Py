@@ -82,3 +82,15 @@ def reverse_string(string):
     return res
 
 
+def is_balanced_parentheses(string):
+    my_stack = Stack()
+    for i in string:
+        if i == '(':
+            my_stack.push(i)
+
+        elif i == ')':
+            if my_stack.is_empty() and i != my_stack.pop():
+                return False
+    return True if my_stack.is_empty() else False
+
+
