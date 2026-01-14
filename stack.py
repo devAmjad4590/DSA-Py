@@ -54,3 +54,31 @@ class Stack:
         return self.stack_list.pop()
 
 
+    def print_stack(self):
+        for i in range(len(self.stack_list)-1, -1, -1):
+            print(self.stack_list[i])
+
+    def is_empty(self):
+        return len(self.stack_list) == 0
+
+    def peek(self):
+        if self.is_empty():
+            return None
+        else:
+            return self.stack_list[-1]
+
+    def size(self):
+        return len(self.stack_list)
+
+def reverse_string(string):
+    my_stack = Stack()
+    res = ''
+    for i in string:
+        my_stack.push(i)
+
+    while not my_stack.is_empty():
+        s = my_stack.pop()
+        res += str(s)
+    return res
+
+
